@@ -26,7 +26,7 @@ module.exports = function SkipCutscenes(dispatch) {
 	
 	function toggleModule() {
 		enabled = !enabled;
-		systemMessage((enabled ? 'Cutscene Disabled' : 'Cutscene Enabled'));
+		systemMessage((enabled ? 'Cutscene Enabled' : 'Cutscene Disabled'));
 	}
 	
 	function systemMessage(msg) {
@@ -35,10 +35,11 @@ module.exports = function SkipCutscenes(dispatch) {
 		authorName: 'CGI',
 		message: msg
 	});
-}
-	if (!enabled) {
+	}
+	
 	dispatch.hook('sPlayMovie', (event) => {
+		if (!enabled) return;
 	dispatch.toServer('cEndMovie', Object.assign({ unk: true }, event));
 	return false;
 	});
-}};
+};
