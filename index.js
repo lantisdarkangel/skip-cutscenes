@@ -1,7 +1,7 @@
 const format = require('./format.js');
 
 module.exports = function SkipCutscenes(dispatch) {
-	let enabled = true;
+	let enabled = false;
 	
 	const chatHook = event => {		
 		let command = format.stripTags(event.message).split(' ');
@@ -26,7 +26,7 @@ module.exports = function SkipCutscenes(dispatch) {
 	
 	function toggleModule() {
 		enabled = !enabled;
-		systemMessage((enabled ? 'Cutscene Enabled' : 'Cutscene Disabled'));
+		systemMessage((enabled ? 'Cutscene Disabled' : 'Cutscene Enabled'));
 	}
 	
 	function systemMessage(msg) {
