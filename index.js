@@ -1,7 +1,7 @@
 const format = require('./format.js');
 
 module.exports = function SkipCutscenes(dispatch) {
-	let enabled = false;
+	let enabled = true;
 	
 	const chatHook = event => {		
 		let command = format.stripTags(event.message).split(' ');
